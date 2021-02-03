@@ -25,8 +25,11 @@ void begin()
     json_error_t error;
     weights = json_load_file("weights.json", 0, &error);
 
-    //std::cout << "weights: " << weights << std::endl;
-    std::cout << "coefficients: " << weights["coefficients"] << std::endl;
+    json_t *intercept = json_object_get(weights, "intercept");
+    double intercept_value = json_number_value(intercept);
+
+    std::cout << "weights: " << weights << std::endl;
+    std::cout << "intercept: " << intercept_value << std::endl;
 }
 
 
