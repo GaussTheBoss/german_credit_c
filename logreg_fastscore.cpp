@@ -28,8 +28,13 @@ void begin()
     json_t *intercept = json_object_get(weights, "intercept");
     double intercept_value = json_number_value(intercept);
 
+    json_t *coefficients = json_object_get(weights, "coefficients");
+    std::vecotr<double> coefficients_value = json_number_value(coefficients);
+
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
+    std::cout << "coefficients: " << coefficients_value << std::endl;
+
 }
 
 
