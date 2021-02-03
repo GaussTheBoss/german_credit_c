@@ -28,12 +28,21 @@ void begin()
     json_t *intercept = json_object_get(weights, "intercept");
     double intercept_value = json_number_value(intercept);
 
-    json_t *coefficients = json_object_get(weights, "coefficients");
-    std::vector<float> coefficients_value = json_array_get(coefficients, 0);
+    json_t *coefficients;
+    json_unpack(weights, "{s:o}", "coefficients", coefficients);
+
+    size_t i;
+    float *coefficients_values = malloc(json_array_size(coefficients) * sizeof(int));
+
+    for(i = 0; i < json_array_length(coefficients); i++)
+        coefficients_values[i] = json_integer_value(json_array_get(coefficients, i));
+
+    //json_t *coefficients = json_object_get(weights, "coefficients");
+    //std::vector<float> coefficients_value = json_array_get(coefficients, 0);
 
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
-    std::cout << "coefficients: " << coefficients_value << std::endl;
+    std::cout << "coefficients: " << coefficients_values << std::endl;
 
 }
 
