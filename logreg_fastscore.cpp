@@ -23,6 +23,8 @@ void begin()
     json_t *weights;
     json_error_t error;
     weights = json_load_file("weights.json", 0, &error);
+    std::cout << "weights: " << weights << std::endl;
+
 }
 
 
