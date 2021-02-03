@@ -33,7 +33,7 @@ void begin()
 
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
-    std::cout << "coefficients: " << coefficients << std::endl;
+    std::cout << "coefficients: " << coefficients_value << std::endl;
 
 }
 
