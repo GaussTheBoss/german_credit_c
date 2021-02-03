@@ -5,7 +5,7 @@
 
 #include <vector>
 #include <list>
-
+#include <math.h>
 #include <jansson.h>
 #include <string.h>
 #include <stdlib.h>
