@@ -76,13 +76,13 @@ void action(fastscore_value_t v, int slot, int seqno) {
         json_t *number_existing_credits = json_object_get(record, "number_existing_credits");
         json_t *number_people_liable = json_object_get(record, "number_people_liable");
 
-        double *duration_months_value= json_number_value(duration_months);
-        double *credit_amount_value= json_number_value(credit_amount);
-        double *installment_rate_value= json_number_value(installment_rate);
-        double *present_residence_since_value= json_number_value(present_residence_since);
-        double *age_years_value= json_number_value(age_years);
-        double *number_existing_credits_value= json_number_value(number_existing_credits);
-        double *number_people_liable_value= json_number_value(number_people_liable);
+        double duration_months_value= json_number_value(duration_months);
+        double credit_amount_value= json_number_value(credit_amount);
+        double installment_rate_value= json_number_value(installment_rate);
+        double present_residence_since_value= json_number_value(present_residence_since);
+        double age_years_value= json_number_value(age_years);
+        double number_existing_credits_value= json_number_value(number_existing_credits);
+        double number_people_liable_value= json_number_value(number_people_liable);
 
         std::vector<float> input_record = {
             duration_months_value, credit_amount_value, installment_rate_value,
