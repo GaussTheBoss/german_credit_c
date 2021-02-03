@@ -24,7 +24,7 @@ void begin()
 }
 
 
-float dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) { 
+static float dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) { 
     float dot_product = 0; 
     // Loop to calculate dot product 
     for (int i = 0; i < 7; i++) 
@@ -35,7 +35,7 @@ float dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) {
 } 
 
 
-float expit (double x) {
+static float expit (double x) {
   return 1.0/(1.0+exp(-x));
 }
 
