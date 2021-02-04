@@ -123,11 +123,14 @@ void action(fastscore_value_t v, int slot, int seqno) {
             present_residence_since_value, age_years_value, number_existing_credits_value,
             number_people_liable_value};
 
+        // printing input_record for verification
         std::cout << "input_record = { ";
         for (float n : input_record) {
             std::cout << n << ", ";
         }
         std::cout << "}; \n";
+
+        std::cout << "dotProduct: " << dotProduct(coefficients, input_record) << std::endl;
 
         // compute the probablity of class 2
         float pred_probability;
