@@ -38,7 +38,7 @@ void begin()
     json_t *number_existing_credits_coeff = json_object_get(weights, "number_existing_credits");
     json_t *number_people_liable_coeff = json_object_get(weights, "number_people_liable");
 
-    double duration_months_coeff_value = json_number_value(duration_months)_coeff;
+    double duration_months_coeff_value = json_number_value(duration_months_coeff);
     double credit_amount_coeff_value = json_number_value(credit_amount_coeff);
     double installment_rate_coeff_value = json_number_value(installment_rate_coeff);
     double present_residence_since_coeff_value = json_number_value(present_residence_since_coeff);
