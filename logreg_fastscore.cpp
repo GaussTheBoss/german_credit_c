@@ -16,6 +16,7 @@
 
 
 float intercept_value;
+std::vector<float> coefficients;
 
 // modelop.init
 void begin()
@@ -49,7 +50,8 @@ void begin()
     float number_people_liable_coeff_value = json_number_value(number_people_liable_coeff);
     
     // Form a vector of input record values
-    static std::vector<float> coefficients = {
+    //static std::vector<float> coefficients = {
+    coefficients = {
         duration_months_coeff_value, credit_amount_coeff_value, installment_rate_coeff_value,
         present_residence_since_coeff_value, age_years_coeff_value, 
         number_existing_credits_coeff_value, number_people_liable_coeff_value};
