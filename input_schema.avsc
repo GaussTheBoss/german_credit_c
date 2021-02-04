@@ -1,34 +1,37 @@
-{
-   "type": "record",
-   "name": "input_schema.avsc",
-   "fields": [
-      {
-         "name": "number_people_liable",
-         "type": "int"
-      },
-      {
-         "name": "credit_amount",
-         "type": "int"
-      },
-      {
-         "name": "duration_months",
-         "type": "int"
-      },
-      {
-         "name": "age_years",
-         "type": "int"
-      },
-      {
-         "name": "installment_rate",
-         "type": "int"
-      },
-      {
-         "name": "number_existing_credits",
-         "type": "int"
-      },
-      {
-         "name": "present_residence_since",
-         "type": "int"
-      }
-   ]
+{   
+    "type": "array",
+    "items: {
+        "type": "record",
+        "name": "input_schema.avsc",
+        "fields": [
+            {
+                "name": "number_people_liable",
+                "type": "int"
+            },
+            {
+                "name": "credit_amount",
+                "type": "int"
+            },
+            {
+                "name": "duration_months",
+                "type": "int"
+            },
+            {
+                "name": "age_years",
+                "type": "int"
+            },
+            {
+                "name": "installment_rate",
+                "type": "int"
+            },
+            {
+                "name": "number_existing_credits",
+                "type": "int"
+            },
+            {
+                "name": "present_residence_since",
+                "type": "int"
+            }
+        ]
+    }
 }
