@@ -1,5 +1,5 @@
 // modelop.schema.0: input_schema.avsc
-// modelop.slot.1: in-use
+// modelop.schema.1: output_schema.avsc
 
 #include "fastscore.h"
 
