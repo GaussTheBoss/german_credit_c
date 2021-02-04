@@ -25,25 +25,36 @@ void begin()
     json_error_t error;
     weights = json_load_file("weights.json", 0, &error);
 
+    // extract intercept from weights file
     json_t *intercept = json_object_get(weights, "intercept");
     double intercept_value = json_number_value(intercept);
 
-    json_t *coefficients;
-    json_unpack(weights, "{s:o}", "coefficients", coefficients);
-    
-    size_t i;
-    double *coefficients_values = (double *) malloc(json_array_size(coefficients) * sizeof(double));
+    // extract coefficient key:values pairs and store values as double
+    json_t *duration_months_coeff = json_object_get(weights, "duration_months");
+    json_t *credit_amount_coeff = json_object_get(weights, "credit_amount");
+    json_t *installment_rate_coeff = json_object_get(weights, "installment_rate");
+    json_t *present_residence_since_coeff = json_object_get(weights, "present_residence_since");
+    json_t *age_years_coeff = json_object_get(record, "age_years");
+    json_t *number_existing_credits_coeff = json_object_get(weights, "number_existing_credits");
+    json_t *number_people_liable_coeff = json_object_get(weights, "number_people_liable");
 
-    for(i = 0; i < json_array_size(coefficients); i++){
-        json_t *tmp = json_array_get(coefficients, i);
-        coefficients_values[i] = json_number_value(tmp);
-    }
-    //json_t *coefficients = json_object_get(weights, "coefficients");
-    //std::vector<float> coefficients_value = json_array_get(coefficients, 0);
+    double duration_months_coeff_value = json_number_value(duration_months)_coeff;
+    double credit_amount_coeff_value = json_number_value(credit_amount_coeff);
+    double installment_rate_coeff_value = json_number_value(installment_rate_coeff);
+    double present_residence_since_coeff_value = json_number_value(present_residence_since_coeff);
+    double age_years_coeff_value = json_number_value(age_years_coeff);
+    double number_existing_credits_coeff_value = json_number_value(number_existing_credits_coeff);
+    double number_people_liable_coeff_value = json_number_value(number_people_liable_coeff);
+    
+     // Form a vector of input record values
+    std::vector<float> coefficients = {
+        duration_months_coeff_value, credit_amount_coeff_value, installment_rate_coeff_value,
+        present_residence_since_coeff_value, age_years_coeff_value, number_existing_credits_coeff_value,
+        number_people_liable_coeff_value};
 
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
-    std::cout << "coefficients: " << coefficients_values << std::endl;
+    std::cout << "coefficients: " << coefficients << std::endl;
 
 }
 
@@ -103,13 +114,13 @@ void action(fastscore_value_t v, int slot, int seqno) {
         json_t *number_existing_credits = json_object_get(record, "number_existing_credits");
         json_t *number_people_liable = json_object_get(record, "number_people_liable");
 
-        double duration_months_value= json_number_value(duration_months);
-        double credit_amount_value= json_number_value(credit_amount);
-        double installment_rate_value= json_number_value(installment_rate);
-        double present_residence_since_value= json_number_value(present_residence_since);
-        double age_years_value= json_number_value(age_years);
-        double number_existing_credits_value= json_number_value(number_existing_credits);
-        double number_people_liable_value= json_number_value(number_people_liable);
+        double duration_months_value = json_number_value(duration_months);
+        double credit_amount_value = json_number_value(credit_amount);
+        double installment_rate_value = json_number_value(installment_rate);
+        double present_residence_since_value = json_number_value(present_residence_since);
+        double age_years_value = json_number_value(age_years);
+        double number_existing_credits_value = json_number_value(number_existing_credits);
+        double number_people_liable_value = json_number_value(number_people_liable);
 
         // Form a vector of input record values
         std::vector<float> input_record = {
