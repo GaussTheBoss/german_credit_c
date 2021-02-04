@@ -15,8 +15,10 @@
 #include <fstream>
 
 
+// declare global variables for intercept and coefficients of logistic regression
 float intercept_value;
 std::vector<float> coefficients;
+
 
 // modelop.init
 void begin()
@@ -32,7 +34,7 @@ void begin()
     json_t *intercept = json_object_get(weights, "intercept");
     intercept_value = json_number_value(intercept);
 
-    // extract coefficient key:values pairs and store values as double
+    // extract coefficient key:values pairs and store values as floats
     json_t *duration_months_coeff = json_object_get(weights, "duration_months");
     json_t *credit_amount_coeff = json_object_get(weights, "credit_amount");
     json_t *installment_rate_coeff = json_object_get(weights, "installment_rate");
@@ -49,8 +51,7 @@ void begin()
     float number_existing_credits_coeff_value = json_number_value(number_existing_credits_coeff);
     float number_people_liable_coeff_value = json_number_value(number_people_liable_coeff);
     
-    // Form a vector of input record values
-    //static std::vector<float> coefficients = {
+    // assign coefficeints above to global coefficients vector
     coefficients = {
         duration_months_coeff_value, credit_amount_coeff_value, installment_rate_coeff_value,
         present_residence_since_coeff_value, age_years_coeff_value, 
@@ -80,27 +81,23 @@ static float expit (double x) {
 // modelop.score
 void action(fastscore_value_t v, int slot, int seqno) {
 
-    
-    //std::vector<float> coefficients = {
-    //    0.0245902893,  0.0000560698123,  0.101241351, 
-    //    0.0114262297, -0.0265132668, -0.340226066, -0.173383674};
-    //float intercept = -0.28894948;
-
     printf("In action got value fmt %d slot %d seqno %d\n", v.fmt, slot, seqno );
 
     int i;
     
+    // parse input as json object
     json_t *a=v.js;
     json_t *b=json_array();
     size_t count=json_array_size(a);
     printf("The input array has %d elements\n", count);
 
+    // loop over records in input array to produce predictions
     for (i = 0; i < count; i++)
     {   
         // get record (JSON) from array of records
         json_t *record = json_array_get(a,i);
 
-        // extract key:values pairs and store values as double
+        // extract key:values pairs and store values as floats
         json_t *duration_months = json_object_get(record, "duration_months");
         json_t *credit_amount = json_object_get(record, "credit_amount");
         json_t *installment_rate = json_object_get(record, "installment_rate");
