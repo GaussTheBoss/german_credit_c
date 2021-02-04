@@ -5,6 +5,10 @@
         "name": "input_schema.avsc",
         "fields": [
             {
+                "name": "ID",
+                "type": "int"
+            },
+            {
                 "name": "number_people_liable",
                 "type": "int"
             },
