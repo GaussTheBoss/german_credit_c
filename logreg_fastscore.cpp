@@ -117,13 +117,15 @@ void action(fastscore_value_t v, int slot, int seqno) {
         std::cout << "duration_months_value: " << duration_months_value << std::endl;
 
         // Form a vector of input record values
-        std::vector<float> input_record = {
+        std::vector<float> input_record;
+        input_record = {
             duration_months_value, credit_amount_value, installment_rate_value,
             present_residence_since_value, age_years_value, number_existing_credits_value,
             number_people_liable_value};
 
         // compute the probablity of class 2
-        float pred_probability = expit(dotProduct(coefficients, input_record) + intercept_value);
+        float pred_probability;
+        pred_probability = expit(dotProduct(coefficients, input_record) + intercept_value);
 
         std::cout << "pred_probability: " << pred_probability << std::endl;
 
