@@ -15,6 +15,22 @@
 #include <fstream>
 
 
+float dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) { 
+    float dot_product = 0; 
+    // Loop to calculate dot product 
+    for (int i = 0; i < 7; i++) 
+
+        dot_product = dot_product + vect_A[i] * vect_B[i];
+
+    return dot_product; 
+} 
+
+
+float expit (double x) {
+  return 1.0/(1.0+exp(-x));
+}
+
+
 // declare global variables for intercept and coefficients of logistic regression
 float intercept_value;
 std::vector<float> coefficients;
@@ -59,22 +75,6 @@ void begin()
 
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
-}
-
-
-void dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) { 
-    float dot_product = 0; 
-    // Loop to calculate dot product 
-    for (int i = 0; i < 7; i++) 
-
-        dot_product = dot_product + vect_A[i] * vect_B[i];
-
-    return dot_product; 
-} 
-
-
-void expit (double x) {
-  return 1.0/(1.0+exp(-x));
 }
 
 
