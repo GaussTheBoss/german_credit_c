@@ -154,7 +154,7 @@ void action(fastscore_value_t v, int slot, int seqno) {
     json_t *response = json_object();
     
     json_object_set(response, "ID", json_integer(record_ID_value));
-    json_object_set(response, "prediction", json_real(prediction));
+    json_object_set(response, "prediction", json_integer(prediction));
 
     // append prediction to overall output
     json_array_append_new(b, response);
