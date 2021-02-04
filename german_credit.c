@@ -15,6 +15,7 @@
 #include <fstream>
 
 
+// function to compute dot product of two 7-d vectors. Used in prediction
 float dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) { 
     float dot_product = 0; 
     // Loop to calculate dot product 
@@ -26,6 +27,7 @@ float dotProduct(std::vector<float> vect_A, std::vector<float> vect_B) {
 } 
 
 
+// expit function used in prediction
 float expit (double x) {
   return 1.0/(1.0+exp(-x));
 }
@@ -72,9 +74,6 @@ void begin()
         duration_months_coeff_value, credit_amount_coeff_value, installment_rate_coeff_value,
         present_residence_since_coeff_value, age_years_coeff_value, 
         number_existing_credits_coeff_value, number_people_liable_coeff_value};
-
-    std::cout << "weights: " << weights << std::endl;
-    std::cout << "intercept: " << intercept_value << std::endl;
 }
 
 
@@ -82,8 +81,6 @@ void begin()
 void action(fastscore_value_t v, int slot, int seqno) {
 
     printf("In action got value fmt %d slot %d seqno %d\n", v.fmt, slot, seqno );
-
-    int i;
     
     // parse input as json object
     json_t *a=v.js;
@@ -92,7 +89,7 @@ void action(fastscore_value_t v, int slot, int seqno) {
     printf("The input array has %d elements\n", count);
 
     // loop over records in input array to produce predictions
-    for (i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {   
         // get record (JSON) from array of records
         json_t *record = json_array_get(a,i);
@@ -114,7 +111,6 @@ void action(fastscore_value_t v, int slot, int seqno) {
         float number_existing_credits_value = json_number_value(number_existing_credits);
         float number_people_liable_value = json_number_value(number_people_liable);
         
-        std::cout << "duration_months_value: " << duration_months_value << std::endl;
 
         // Form a vector of input record values
         std::vector<float> input_record;
