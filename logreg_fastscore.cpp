@@ -32,7 +32,7 @@ void begin()
     json_unpack(weights, "{s:o}", "coefficients", coefficients);
     
     size_t i;
-    float *coefficients_values = malloc(json_array_size(coefficients) * sizeof(float));
+    float *coefficients_values = (float * ) malloc(json_array_size(coefficients) * sizeof(float));
 
     for(i = 0; i < json_array_size(coefficients); i++)
         coefficients_values[i] = json_number_value(json_array_get(coefficients, i));
