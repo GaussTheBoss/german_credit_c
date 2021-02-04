@@ -34,10 +34,10 @@ void begin()
     size_t i;
     double *coefficients_values = (double *) malloc(json_array_size(coefficients) * sizeof(double));
 
-    for(i = 0; i < json_array_size(coefficients); i++)
+    for(i = 0; i < json_array_size(coefficients); i++){
         json_t *tmp = json_array_get(coefficients, i);
         coefficients_values[i] = json_number_value(tmp);
-
+    }
     //json_t *coefficients = json_object_get(weights, "coefficients");
     //std::vector<float> coefficients_value = json_array_get(coefficients, 0);
 
