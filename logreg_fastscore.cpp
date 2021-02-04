@@ -123,6 +123,8 @@ void action(fastscore_value_t v, int slot, int seqno) {
         // compute the probablity of class 2
         float pred_probability = expit(dotProduct(coefficients, input_record) + intercept_value);
 
+        std::cout << "pred_probability: " << pred_probability << std::endl;
+
         // map probability to to classes {1,2}
         int prediction;
 
@@ -131,6 +133,8 @@ void action(fastscore_value_t v, int slot, int seqno) {
         } else {
             prediction = 2;
         }
+        
+        std::cout << "prediction: " << prediction << std::endl;
 
         // declare json object of prediction
 	    json_t *response=json_object();
