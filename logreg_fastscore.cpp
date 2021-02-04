@@ -15,6 +15,8 @@
 #include <fstream>
 
 
+float intercept_value;
+
 // modelop.init
 void begin()
 {
@@ -27,7 +29,7 @@ void begin()
 
     // extract intercept from weights file
     json_t *intercept = json_object_get(weights, "intercept");
-    static float intercept_value = json_number_value(intercept);
+    intercept_value = json_number_value(intercept);
 
     // extract coefficient key:values pairs and store values as double
     json_t *duration_months_coeff = json_object_get(weights, "duration_months");
