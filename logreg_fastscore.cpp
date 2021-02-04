@@ -34,7 +34,7 @@ void begin()
     json_t *credit_amount_coeff = json_object_get(weights, "credit_amount");
     json_t *installment_rate_coeff = json_object_get(weights, "installment_rate");
     json_t *present_residence_since_coeff = json_object_get(weights, "present_residence_since");
-    json_t *age_years_coeff = json_object_get(record, "age_years");
+    json_t *age_years_coeff = json_object_get(weights, "age_years");
     json_t *number_existing_credits_coeff = json_object_get(weights, "number_existing_credits");
     json_t *number_people_liable_coeff = json_object_get(weights, "number_people_liable");
 
