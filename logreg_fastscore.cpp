@@ -27,7 +27,7 @@ void begin()
 
     // extract intercept from weights file
     json_t *intercept = json_object_get(weights, "intercept");
-    double intercept_value = json_number_value(intercept);
+    float intercept_value = json_number_value(intercept);
 
     // extract coefficient key:values pairs and store values as double
     json_t *duration_months_coeff = json_object_get(weights, "duration_months");
@@ -38,15 +38,15 @@ void begin()
     json_t *number_existing_credits_coeff = json_object_get(weights, "number_existing_credits");
     json_t *number_people_liable_coeff = json_object_get(weights, "number_people_liable");
 
-    double duration_months_coeff_value = json_number_value(duration_months_coeff);
-    double credit_amount_coeff_value = json_number_value(credit_amount_coeff);
-    double installment_rate_coeff_value = json_number_value(installment_rate_coeff);
-    double present_residence_since_coeff_value = json_number_value(present_residence_since_coeff);
-    double age_years_coeff_value = json_number_value(age_years_coeff);
-    double number_existing_credits_coeff_value = json_number_value(number_existing_credits_coeff);
-    double number_people_liable_coeff_value = json_number_value(number_people_liable_coeff);
+    float duration_months_coeff_value = json_number_value(duration_months_coeff);
+    float credit_amount_coeff_value = json_number_value(credit_amount_coeff);
+    float installment_rate_coeff_value = json_number_value(installment_rate_coeff);
+    float present_residence_since_coeff_value = json_number_value(present_residence_since_coeff);
+    float age_years_coeff_value = json_number_value(age_years_coeff);
+    float number_existing_credits_coeff_value = json_number_value(number_existing_credits_coeff);
+    float number_people_liable_coeff_value = json_number_value(number_people_liable_coeff);
     
-     // Form a vector of input record values
+    // Form a vector of input record values
     std::vector<float> coefficients = {
         duration_months_coeff_value, credit_amount_coeff_value, installment_rate_coeff_value,
         present_residence_since_coeff_value, age_years_coeff_value, number_existing_credits_coeff_value,
@@ -54,8 +54,6 @@ void begin()
 
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
-    std::cout << "coefficients: " << coefficients << std::endl;
-
 }
 
 
