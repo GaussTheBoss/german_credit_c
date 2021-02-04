@@ -94,6 +94,10 @@ void action(fastscore_value_t v, int slot, int seqno) {
     // get record (JSON) from array of records
     json_t *record = json_array_get(a, i);
 
+    // extract record_ID and store for use in output
+    json_t *record_ID = json_object_get(record, "ID");
+    int record_ID_value = json_number_value(record_ID);
+
     // extract key:values pairs and store values as floats
     json_t *duration_months = json_object_get(record, "duration_months");
     json_t *credit_amount = json_object_get(record, "credit_amount");
@@ -148,7 +152,8 @@ void action(fastscore_value_t v, int slot, int seqno) {
 
     // declare json object of prediction
     json_t *response = json_object();
-
+    
+    json_object_set(response, "ID", json_real(record_ID_value));
     json_object_set(response, "prediction", json_real(prediction));
 
     // append prediction to overall output
