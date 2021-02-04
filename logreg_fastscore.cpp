@@ -117,7 +117,7 @@ void action(fastscore_value_t v, int slot, int seqno) {
         std::cout << "duration_months_value: " << duration_months_value << std::endl;
 
         // Form a vector of input record values
-        std::vector<float> input_record;
+        std::vector<float> input_record[];
         input_record = {
             duration_months_value, credit_amount_value, installment_rate_value,
             present_residence_since_value, age_years_value, number_existing_credits_value,
