@@ -49,8 +49,8 @@ void begin()
     // Form a vector of input record values
     std::vector<float> coefficients = {
         duration_months_coeff_value, credit_amount_coeff_value, installment_rate_coeff_value,
-        present_residence_since_coeff_value, age_years_coeff_value, number_existing_credits_coeff_value,
-        number_people_liable_coeff_value};
+        present_residence_since_coeff_value, age_years_coeff_value, 
+        number_existing_credits_coeff_value, number_people_liable_coeff_value};
 
     std::cout << "weights: " << weights << std::endl;
     std::cout << "intercept: " << intercept_value << std::endl;
@@ -76,18 +76,11 @@ static float expit (double x) {
 // modelop.score
 void action(fastscore_value_t v, int slot, int seqno) {
 
-    //std::ifstream ifs("weights.json");
-    //auto weights = json::parse(ifs);  
     
-    //std::cout << "weights: " << weights << std::endl;      
-    
-    //std::vector<float> coefficients = weights["coefficients"];
-    //float intercept = weights["intercept"];
-    
-    std::vector<float> coefficients = {
-        0.0245902893,  0.0000560698123,  0.101241351, 
-        0.0114262297, -0.0265132668, -0.340226066, -0.173383674};
-    float intercept = -0.28894948;
+    //std::vector<float> coefficients = {
+    //    0.0245902893,  0.0000560698123,  0.101241351, 
+    //    0.0114262297, -0.0265132668, -0.340226066, -0.173383674};
+    //float intercept = -0.28894948;
 
     printf("In action got value fmt %d slot %d seqno %d\n", v.fmt, slot, seqno );
 
@@ -127,7 +120,7 @@ void action(fastscore_value_t v, int slot, int seqno) {
             number_people_liable_value};
 
         // compute the probablity of class 2
-        float pred_probability = expit(dotProduct(coefficients, input_record) + intercept);
+        float pred_probability = expit(dotProduct(coefficients, input_record) + intercept_value);
 
         // map probability to to classes {1,2}
         int prediction;
