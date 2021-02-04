@@ -113,6 +113,8 @@ void action(fastscore_value_t v, int slot, int seqno) {
         float age_years_value = json_number_value(age_years);
         float number_existing_credits_value = json_number_value(number_existing_credits);
         float number_people_liable_value = json_number_value(number_people_liable);
+        
+        std::cout << "duration_months_value: " << duration_months_value << std::endl;
 
         // Form a vector of input record values
         std::vector<float> input_record = {
