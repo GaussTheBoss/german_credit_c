@@ -1,4 +1,4 @@
-//fastscore.slot.0: in-use
+//fastscore.schema.0: input_schema.avsc
 //fastscore.slot.1: in-use
 
 #include "fastscore.h"
