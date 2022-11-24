@@ -1,4 +1,4 @@
-# german_credit_c
+# german_credit_cpp
 A Logistic regression C++ model to predict likelihood of loan default.
 Model was trained on the numerical features of the German Credit Data dataset.
 
